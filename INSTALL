@@ -1,0 +1,9 @@
+Building fairbyte
+
+See doc/readme-qt.rst for instructions on building fairbyte QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of fairbyte.
+
+See doc/build-*.txt for instructions on building fairbyted,
+the intended-for-services, no-graphical-interface, reference
+implementation of fairbyte.
