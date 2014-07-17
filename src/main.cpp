@@ -975,7 +975,16 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees, const CBlockIndex* pind
 			return 0;
 
 	int nPoWHeight = GetPowHeight(pindex) + 1;
-	nSubsidy >>= nPoWHeight / 14400;
+	printf(">> nHeight = %d, nPoWHeight = %d\n", nHeight, nPoWHeight);
+
+	nSubsidy >>= (nPoWHeight / 14400);
+
+	/* to be decided
+	if(nHeight > MIDDLE_POW_BLOCK && nHeight <= LAST_POW_BLOCK)
+	{
+		nSubsidy >>= (nPoWHeight / 144000);
+	}
+	*/
 
     return nSubsidy + nFees;
 }
