@@ -1681,8 +1681,8 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
         <location line="+86"/>
         <location line="+86"/>
         <location line="+32"/>
-        <source>0.00 FBC</source>
-        <translation>123.456 FBC {0.00 ?}</translation>
+        <source>0.00 FBT</source>
+        <translation>123.456 FBT {0.00 ?}</translation>
     </message>
     <message>
         <location line="-191"/>
@@ -1751,8 +1751,8 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     </message>
     <message>
         <location line="+16"/>
-        <source>123.456 FBC</source>
-        <translation>123.456 FBC</translation>
+        <source>123.456 FBT</source>
+        <translation>123.456 FBT</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1766,8 +1766,8 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a fairbyte address (e.g. FBC5uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
-        <translation>Entrer une adresse fairbyte (par ex: FBC5uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
+        <source>Enter a fairbyte address (e.g. FBT5uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
+        <translation>Entrer une adresse fairbyte (par ex: FBT5uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
     </message>
     <message>
         <location line="+15"/>
