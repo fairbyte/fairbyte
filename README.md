@@ -2,8 +2,10 @@
 
 FairByte is a X13 PoW/PoS experimental coin with 2 PoW stages
 
-###Current version:  1.1.1.1###
-Previous version: 1.0.1.1
+###Current version:  1.2.1.1###
+Previous versions: 
+1.1.1.1
+1.0.1.1
 
 As of July 28th, 2014 the symbol of FairByte has been changed from FBC to FBT.
 

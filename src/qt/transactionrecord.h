@@ -64,6 +64,7 @@ public:
     {
         Other,
         Generated,
+        Staked, //added new sort field
         SendToAddress,
         SendToOther,
         RecvWithAddress,

@@ -76,15 +76,16 @@ win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
 win32:QMAKE_LFLAGS += -static-libgcc -static-libstdc++
 lessThan(QT_MAJOR_VERSION, 5): win32: QMAKE_LFLAGS *= -static
 
-#USE_QRCODE=1
+
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
 contains(USE_QRCODE, 1) {
     message(Building with QRCode support)
     DEFINES += USE_QRCODE
-    !win32:LIBS += -lqrencode
+    #!win32:LIBS += -lqrencode
     win32:INCLUDEPATH +=$$QRENCODE_INCLUDE_PATH
-    win32:LIBS += $$join(QRENCODE_LIB_PATH,,-L) -lqrencode
+    #win32:LIBS += $$join(QRENCODE_LIB_PATH,,-L) -lqrencode
+    QR_LIBS += $$join(QRENCODE_LIB_PATH,,-L) -lqrencode
 }
 
 # use: qmake "USE_UPNP=1" ( enabled by default; default)
@@ -123,9 +124,23 @@ contains(USE_IPV6, -) {
     DEFINES += USE_IPV6=$$USE_IPV6
 }
 
-contains(BITCOIN_NEED_QT_PLUGINS, 1) {
-    DEFINES += BITCOIN_NEED_QT_PLUGINS
+contains(FAIRBYTE_NEED_QT_PLUGINS, 1) {
+    DEFINES += FAIRBYTE_NEED_QT_PLUGINS
     QTPLUGIN += qcncodecs qjpcodecs qtwcodecs qkrcodecs qtaccessiblewidgets
+}
+
+contains(FAIRBYTE_QT_TEST, 1) {
+  SOURCES += src/qt/test/test_main.cpp \
+    src/qt/test/uritests.cpp \
+    src/qt/test/paymentservertests.cpp
+  HEADERS += src/qt/test/uritests.h \
+    src/qt/test/paymentservertests.h
+ 
+  DEPENDPATH += src/qt/test
+  QT += testlib
+  TARGET = fairbyte-qt_test
+  DEFINES += FAIRBYTE_QT_TEST
+  macx: CONFIG -= app_bundle
 }
 
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers
@@ -491,8 +506,10 @@ windows:LIBS += -lboost_chrono$$BOOST_LIB_SUFFIX
 contains(RELEASE, 1) {
     !windows:!macx {
         # Linux: turn dynamic linking back on for c/c++ runtime libraries
-        LIBS += -Wl,-Bdynamic
+        LIBS += -Wl,-Bdynamic -ldl
     }
 }
+
+LIBS += $$QR_LIBS
 
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)
