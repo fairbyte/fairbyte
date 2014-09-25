@@ -410,7 +410,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "fairbyte is downloading blocks...");
 
     if (pindexBest->nHeight > FIRST_POS_BLOCK && pindexBest->nHeight <= MIDDLE_POW_BLOCK)
-    	throw JSONRPCError(RPC_MISC_ERROR, "No PoW blocks available at the moment. Wait for more at block 200000.");
+    	throw JSONRPCError(RPC_MISC_ERROR, "No PoW blocks available at the moment. Wait for more at block 150000.");
 
     if (pindexBest->nHeight > LAST_POW_BLOCK)
         throw JSONRPCError(RPC_MISC_ERROR, "No more PoW blocks");

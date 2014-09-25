@@ -2,8 +2,9 @@
 
 FairByte is a X13 PoW/PoS experimental coin with 2 PoW stages
 
-###Current version:  1.2.1.1###
-Previous versions: 
+###Current version:  1.3.1.1###
+Previous versions:
+1.2.1.1 
 1.1.1.1
 1.0.1.1
 

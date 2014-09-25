@@ -48,7 +48,7 @@ unsigned int nStakeTargetSpacing = 60;				// 60 sec block spacing for PoS
 unsigned int nWorkTargetSpacing = 120;              // 120 sec block spacing for PoW
 static const int YEARLY_POS_BLOCK_COUNT = 525000;	// POS blocks in a year
 unsigned int nModifierInterval = 16 * 60;			// time to elapse before new modifier is computed
-unsigned int nWorkDephasing = 28800;				// pow dephase index for second stage
+unsigned int nWorkDephasing = 34368;				// pow dephase index for second stage
 int nCoinbaseMaturity = 120;
 
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -978,14 +978,16 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees, const CBlockIndex* pind
 	int nPoWHeight = GetPowHeight(pindex) + 1;
 	printf(">> nHeight = %d, nPoWHeight = %d\n", nHeight, nPoWHeight);
 
-	nSubsidy >>= (nPoWHeight / 14400);
-
-	/*
 	if(nHeight > MIDDLE_POW_BLOCK && nHeight <= LAST_POW_BLOCK)
 	{
-		nSubsidy >>= ((nPoWHeight - nWorkDephasing) / 14400);
+		//halving second POW at 40 days block time
+		nSubsidy >>= ((nPoWHeight - nWorkDephasing) / 57600);
 	}
-	*/
+	else
+	{
+		nSubsidy >>= (nPoWHeight / 14400);
+	}
+
 
     return nSubsidy + nFees;
 }
